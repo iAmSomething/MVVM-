@@ -15,6 +15,13 @@ class RegisterVC : UIViewController {
   @IBOutlet weak var nickNameTextField: UITextField!
   @IBOutlet weak var registerBtn: UIButton!
   @IBOutlet weak var result: UILabel!
+  
+  //practice : 약관 동의 조건 추가하기
+  //요구사항 : 현재 이메일 비밀번호 닉네임만 받는데, 필수 동의사항과 선택 동의사항을 하나씩 넣어 주세요!
+  //         동의한 약관의 경우 isSelected값을 true로 설정해주세요!
+  @IBOutlet weak var privacyAgreeBtn: UIButton!
+  @IBOutlet weak var promotionAgreeBtn: UIButton!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     bind()

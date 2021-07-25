@@ -13,6 +13,11 @@ class UsingTableViewController : UIViewController {
   
   @IBOutlet weak var textTableView: UITableView!
   @IBOutlet weak var addCellTextField: UITextField!
+  
+  //practice : 전체 삭제 기능을 만들기
+  @IBOutlet weak var deleteAllBtn: UIButton!
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setUpTableView()

@@ -29,12 +29,11 @@ class TableViewViewModel {
 extension TableViewViewModel {
   func transform(input : Input) -> Output {
     weak var `self` = self
-    var usecase : [TableViewModel] = [.init(content: "첫 번째", textColor: .red),
-                                      .init(content: "두 번째", textColor: .green)]
-    
+
     let addItem = input.addContent.withLatestFrom(input.newContent).map{TableViewModel(content: $0, textColor: .brown)}
     let items = input.loadView
-      .flatMapLatest{ _ -> Observable<[TableViewModel]> in
+      .withLatestFrom(self?.state.currentItems ?? .empty())
+      .flatMapLatest{ usecase -> Observable<[TableViewModel]> in
         return self?.addTableView(addItem: addItem,
                                   deleteItem: input.deleteContent,
                                   usecase: usecase) ?? .empty()

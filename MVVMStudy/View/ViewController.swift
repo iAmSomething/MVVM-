@@ -15,6 +15,12 @@ class ViewController: UIViewController {
   @IBOutlet weak var secondBtn: UIButton!
   @IBOutlet weak var thirdBtn: UIButton!
   @IBOutlet weak var btnInfo: UILabel!
+  
+  
+  //practice : 글자수 세기
+  @IBOutlet weak var textField: UITextField!
+  @IBOutlet weak var wordCount: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     bind()
@@ -23,7 +29,10 @@ class ViewController: UIViewController {
   private let viewModel = ViewModel()
   private let buttonClickSubject = PublishSubject<Int>()
   func bind() {
+    
+    //practice tip : textfield의 text값은 String?타입인데, .orEmpty 프로퍼티로 null을 걸러낼 수 있다!
     let input = ViewModel.Input(buttonClicked: buttonClickSubject)
+
     
     let output = viewModel.transform(input: input)
     
@@ -68,5 +77,10 @@ class ViewController: UIViewController {
         .bind(to: buttonClickSubject)
         .disposed(by: disposeBag)
   }
+  
+  
+  
+  
+  
 }
 
