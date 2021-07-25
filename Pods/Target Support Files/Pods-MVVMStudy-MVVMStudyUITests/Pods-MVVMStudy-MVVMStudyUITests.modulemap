@@ -1,0 +1,6 @@
+framework module Pods_MVVMStudy_MVVMStudyUITests {
+  umbrella header "Pods-MVVMStudy-MVVMStudyUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

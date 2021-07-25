@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "E57D9B8F-2FBD-4D6E-86F0-DE02079ABE25"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A163A9ED-11A6-4D47-B554-1765A677CF0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MVVMStudy/ViewModel/RegisterViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "transform(input:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A163A9ED-11A6-4D47-B554-1765A677CF0E - c8d640afc4951c3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MVVMStudy.RegisterViewModel.transform(input: MVVMStudy.RegisterViewModel.Input) -&gt; MVVMStudy.RegisterViewModel.Output"
+                  moduleName = "MVVMStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gimtaehun/Desktop/MVVMStudy/MVVMStudy/ViewModel/RegisterViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1172">
+               </Location>
+               <Location
+                  uuid = "A163A9ED-11A6-4D47-B554-1765A677CF0E - 37f244f2cbba1f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #5 ((Swift.Bool, Swift.Bool, Swift.Bool)) -&gt; Swift.Bool in MVVMStudy.RegisterViewModel.transform(input: MVVMStudy.RegisterViewModel.Input) -&gt; MVVMStudy.RegisterViewModel.Output"
+                  moduleName = "MVVMStudy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gimtaehun/Desktop/MVVMStudy/MVVMStudy/ViewModel/RegisterViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
