@@ -11,3 +11,4 @@ struct TableViewModel {
   let content: String
   let textColor: UIColor
 }
+

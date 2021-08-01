@@ -28,14 +28,20 @@ class ViewController: UIViewController {
   private let disposeBag = DisposeBag()
   private let viewModel = ViewModel()
   private let buttonClickSubject = PublishSubject<Int>()
+  private let textSubject = PublishSubject<String>()
   func bind() {
     
     //practice tip : textfield의 text값은 String?타입인데, .orEmpty 프로퍼티로 null을 걸러낼 수 있다!
-    let input = ViewModel.Input(buttonClicked: buttonClickSubject)
+    let input = ViewModel.Input(buttonClicked: buttonClickSubject,
+                                textfieldStr: textSubject)
 
     
     let output = viewModel.transform(input: input)
-    
+    output.selectedBtn.bind(onNext: { [weak self] model in
+      print(model.buttonInfo)
+      print(model.buttonNumber)
+      
+    }).disposed(by: disposeBag)
 //    output.selectedBtn
 //      .share()
 //      .bind(onNext: {[weak self] btnModel in
@@ -65,6 +71,12 @@ class ViewController: UIViewController {
       .map{$0.buttonNumber == 3}
       .bind(to: thirdBtn.rx.isSelected)
       .disposed(by: disposeBag)
+    output.textCount
+      .map{ count in
+        return String(count)
+      }
+      .bind(to: wordCount.rx.text)
+      .disposed(by: disposeBag)
     
     
     firstBtn.rx.tap.map{return 1}
@@ -76,11 +88,10 @@ class ViewController: UIViewController {
     thirdBtn.rx.tap.map{return 3}
         .bind(to: buttonClickSubject)
         .disposed(by: disposeBag)
+    
+    textField.rx.text.orEmpty
+      .bind(to: textSubject)
+      .disposed(by: disposeBag)
   }
-  
-  
-  
-  
-  
 }
 

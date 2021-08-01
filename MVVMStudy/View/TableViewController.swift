@@ -13,10 +13,12 @@ class UsingTableViewController : UIViewController {
   
   @IBOutlet weak var textTableView: UITableView!
   @IBOutlet weak var addCellTextField: UITextField!
+  @IBOutlet weak var addBtn: UIButton!
   
   //practice : 전체 삭제 기능을 만들기
   @IBOutlet weak var deleteAllBtn: UIButton!
   
+  @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,6 +31,9 @@ class UsingTableViewController : UIViewController {
     textTableView.estimatedRowHeight = 80
     textTableView.rowHeight = UITableView.automaticDimension
     textTableView.separatorStyle = .none
+    
+    textTableView.isScrollEnabled = false
+    
   }
   private let disposeBag = DisposeBag()
   private let loadViewTrigger = PublishSubject<Void>()
@@ -38,13 +43,23 @@ class UsingTableViewController : UIViewController {
                                     textTableView.rx.modelSelected(TableViewModel.self).asObservable())
     let input = TableViewViewModel.Input(loadView: loadViewTrigger,
                                          newContent: addCellTextField.rx.text.orEmpty.asObservable(),
-                                         addContent: addCellTextField.rx.controlEvent(.editingDidEnd).share().asObservable(), deleteContent: deleteItem)
+                                         addContent: addBtn.rx.tap.asObservable(),
+                                         deleteContent: deleteItem,
+                                         deleteAll: deleteAllBtn.rx.tap.asObservable())
     let output = viewModel.transform(input: input)
-    output.tableViewItems.bind(to: textTableView.rx.items(cellIdentifier: tableViewCell.id,
-                                                          cellType: tableViewCell.self)) {row, data, cell in
+    output.tableViewItems
+      .bind(to: textTableView.rx.items(cellIdentifier: tableViewCell.id,
+                                          cellType: tableViewCell.self)) {row, data, cell in
+        
       cell.bind(model: data)
     }.disposed(by: disposeBag)
     
+    textTableView.rx.observeWeakly(CGSize.self, "contentSize")
+      .compactMap{$0?.height}
+      .distinctUntilChanged()
+      .bind{[weak self] height in
+        self?.tableViewHeight.constant = height
+      }.disposed(by: disposeBag)
     
     viewModel.state.currentItems.bind{
       print($0)

@@ -10,6 +10,8 @@ struct RegisterModel {
   let email: String
   let passWord: String
   let nickName: String
+  let privacy: Bool
+  let promotion: Bool
 }
 enum ValidationRegex: String{
   case email = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"

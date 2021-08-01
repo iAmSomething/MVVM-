@@ -28,11 +28,16 @@ class RegisterVC : UIViewController {
   }
   private let disposeBag = DisposeBag()
   private let viewModel = RegisterViewModel()
+  private let privacyAgreeSubject = BehaviorSubject<Bool>(value: false)
+  private let promotionAgreeSubject = BehaviorSubject<Bool>(value: false)
   private func bind() {
     let input = RegisterViewModel.Input(emailText: emailTextField.rx.text.orEmpty.asObservable(),
                                         passwordText: passWordTextField.rx.text.orEmpty.asObservable(),
                                         nickNameText: nickNameTextField.rx.text.orEmpty.asObservable(),
-                                        registerBtnClicked: registerBtn.rx.tap.asObservable())
+                                        registerBtnClicked: registerBtn.rx.tap.asObservable(),
+                                        privacyAgree: privacyAgreeSubject,
+                                        promotionAgree: promotionAgreeSubject)
+    
     let output = viewModel.transform(input: input)
     
     output.registerEnabled
@@ -48,5 +53,18 @@ class RegisterVC : UIViewController {
           """
       }.disposed(by: disposeBag)
     
+    privacyAgreeBtn.rx.tap.map{ [weak self] in
+      self?.privacyAgreeBtn.isSelected.toggle()
+      return self?.privacyAgreeBtn.isSelected ?? false
+    }
+    .bind(to: privacyAgreeSubject)
+    .disposed(by: disposeBag)
+    
+    promotionAgreeBtn.rx.tap.map{ [weak self] in
+      self?.promotionAgreeBtn.isSelected.toggle()
+      return self?.promotionAgreeBtn.isSelected ?? false
+    }
+    .bind(to: promotionAgreeSubject)
+    .disposed(by: disposeBag)
   }
 }

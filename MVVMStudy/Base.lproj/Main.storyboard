@@ -218,17 +218,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Axq-QR-3wc">
-                                <rect key="frame" x="16" y="528" width="382" height="34"/>
+                                <rect key="frame" x="16" y="184" width="338" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="c8X-9u-HYx">
-                                <rect key="frame" x="0.0" y="88" width="414" height="424"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="dCs-oS-vi0"/>
+                                </constraints>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zp-Wg-fFJ">
-                                <rect key="frame" x="179" y="570" width="56" height="30"/>
+                                <rect key="frame" x="179" y="226" width="56" height="30"/>
                                 <state key="normal" title="전체 삭제"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnN-UF-dWt">
+                                <rect key="frame" x="362" y="186" width="46" height="30"/>
+                                <state key="normal" title="등록"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SWS-Aw-zKW"/>
@@ -237,18 +244,22 @@
                             <constraint firstItem="Axq-QR-3wc" firstAttribute="top" secondItem="c8X-9u-HYx" secondAttribute="bottom" constant="16" id="0m9-xu-N51"/>
                             <constraint firstItem="c8X-9u-HYx" firstAttribute="leading" secondItem="SWS-Aw-zKW" secondAttribute="leading" id="Ais-qa-1jV"/>
                             <constraint firstItem="SWS-Aw-zKW" firstAttribute="trailing" secondItem="c8X-9u-HYx" secondAttribute="trailing" id="Lgh-lu-e5m"/>
-                            <constraint firstItem="SWS-Aw-zKW" firstAttribute="bottom" secondItem="Axq-QR-3wc" secondAttribute="bottom" constant="300" id="MNX-gq-ALA"/>
                             <constraint firstItem="Axq-QR-3wc" firstAttribute="leading" secondItem="SWS-Aw-zKW" secondAttribute="leading" constant="16" id="Mbu-WV-j9U"/>
                             <constraint firstItem="6zp-Wg-fFJ" firstAttribute="centerX" secondItem="SWS-Aw-zKW" secondAttribute="centerX" id="Md9-vZ-dfx"/>
                             <constraint firstItem="6zp-Wg-fFJ" firstAttribute="top" secondItem="Axq-QR-3wc" secondAttribute="bottom" constant="8" id="RVs-ul-g3R"/>
+                            <constraint firstItem="DnN-UF-dWt" firstAttribute="centerY" secondItem="Axq-QR-3wc" secondAttribute="centerY" id="dZW-P1-opz"/>
                             <constraint firstItem="c8X-9u-HYx" firstAttribute="top" secondItem="SWS-Aw-zKW" secondAttribute="top" id="dp9-Br-5uk"/>
-                            <constraint firstItem="SWS-Aw-zKW" firstAttribute="trailing" secondItem="Axq-QR-3wc" secondAttribute="trailing" constant="16" id="oPI-wZ-UR3"/>
+                            <constraint firstItem="DnN-UF-dWt" firstAttribute="leading" secondItem="Axq-QR-3wc" secondAttribute="trailing" constant="8" symbolic="YES" id="gQ2-Jp-6TP"/>
+                            <constraint firstItem="SWS-Aw-zKW" firstAttribute="trailing" secondItem="Axq-QR-3wc" secondAttribute="trailing" constant="60" id="oPI-wZ-UR3"/>
+                            <constraint firstItem="SWS-Aw-zKW" firstAttribute="trailing" secondItem="DnN-UF-dWt" secondAttribute="trailing" constant="6" id="vHT-gF-PU6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w2I-LT-gE6"/>
                     <connections>
+                        <outlet property="addBtn" destination="DnN-UF-dWt" id="ymC-Yg-hxb"/>
                         <outlet property="addCellTextField" destination="Axq-QR-3wc" id="bkg-Ld-qJW"/>
                         <outlet property="deleteAllBtn" destination="6zp-Wg-fFJ" id="kPO-f5-Qh8"/>
+                        <outlet property="tableViewHeight" destination="dCs-oS-vi0" id="DsD-S9-gXX"/>
                         <outlet property="textTableView" destination="c8X-9u-HYx" id="JmE-8V-Q3R"/>
                     </connections>
                 </viewController>
